@@ -12,7 +12,7 @@ app = Dash(external_stylesheets=[dbc.themes.DARKLY])
 load_figure_template('DARKLY')
 
 def sql_connect():
-    cnx = mysql.connector.connect(user='root', password='password@12',
+    cnx = mysql.connector.connect(user='root', password='',
                                   host='localhost', database='steam')
     cursor = cnx.cursor()
     return cnx, cursor
@@ -131,7 +131,7 @@ app.layout = html.Div([
                Input(component_id='time_period', component_property='value')])
 
 def get_player_count(game, n, period):
-    cnx = mysql.connector.connect(user='root', password='password@12',
+    cnx = mysql.connector.connect(user='root', password='',
                                   host='localhost', database='steam')
 
     player = 'SELECT current_hourly.time_stamp, current_hourly.current_playercount, game_list.game_name \
@@ -239,7 +239,7 @@ def get_avg_players(game):
               Input(component_id='dropdown', component_property='value'))
 
 def get_price(game):
-    cnx = mysql.connector.connect(user='root', password='password@12',
+    cnx = mysql.connector.connect(user='root', password='',
                                   host='localhost', database='steam')
 
     price = 'SELECT price_count.day, game_list.initial_price, price_count.current_price, price_count.percent_discount, game_list.game_name \
@@ -309,7 +309,7 @@ def get_discount(game):
 @app.callback(Output(component_id='play_graph', component_property='figure'),
               Input(component_id='dropdown', component_property='value'))
 def get_hours(game):
-    cnx = mysql.connector.connect(user='root', password='password@12',
+    cnx = mysql.connector.connect(user='root', password='',
                                   host='localhost', database='steam')
 
     query = 'SELECT play_count.day, play_count.hours_played, game_list.game_name FROM play_count JOIN game_list ON play_count.app_id = game_list.steam_id'
@@ -358,4 +358,4 @@ def get_total_hours(game):
         return f'Total Hours Played: {total} hours'
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8050, host='192.168.1.246')
+    app.run_server(debug=True, port=8050, host='')
