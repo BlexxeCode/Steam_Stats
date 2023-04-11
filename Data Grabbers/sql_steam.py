@@ -7,18 +7,18 @@ import json
 import requests
 from sql_grabbers import sql_info_grabber
 
-key = 'C63D2BA4A6622E4B01587B43DEC2F55E'
+key = ''
 
 
 
 
 def get_steam_info():
-    cnx = mysql.connector.connect(user='root', password='password@12',
+    cnx = mysql.connector.connect(user='root', password='',
                                   host='localhost', database='steam')
     cursor = cnx.cursor()
 
     steam = Steam(key)
-    user = steam.users.get_owned_games("76561198253206281")
+    user = steam.users.get_owned_games("")
 
     ids = sql_info_grabber(cnx, cursor)
     current_ids = ids.get_sql_ids()
