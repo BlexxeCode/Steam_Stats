@@ -10,7 +10,7 @@ from decimal import Decimal
 from sql_grabbers import sql_info_grabber
 
 
-cnx1 = mysql.connector.connect(user='root', password='password@12',
+cnx1 = mysql.connector.connect(user='root', password='',
                                  host='localhost', database='steam')
 cursor1 = cnx1.cursor()
 app_list = []
@@ -20,14 +20,14 @@ cursor1.execute(app_id)
 for steam_id in cursor1:
     app_list.append(steam_id[0])
 
-key = 'C63D2BA4A6622E4B01587B43DEC2F55E'
+key = ''
 steam = Steam(key)
 
 def insert_hours(steam_id=app_list):
-    cnx = mysql.connector.connect(user='root', password='password@12',
+    cnx = mysql.connector.connect(user='root', password='',
                                   host='localhost', database='steam')
     cursor = cnx.cursor()
-    user = steam.users.get_owned_games('76561198253206281')
+    user = steam.users.get_owned_games('')
     for id in user['games']:
         for app in steam_id:
             #print(id['appid'])
