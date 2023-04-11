@@ -12,7 +12,7 @@ from sql_grabbers import sql_info_grabber
 
 
 def price_count():
-    cnx = mysql.connector.connect(user='root', password='password@12',
+    cnx = mysql.connector.connect(user='root', password='',
                                   host='localhost', database='steam')
     cursor = cnx.cursor()
 
