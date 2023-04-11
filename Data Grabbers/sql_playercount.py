@@ -8,7 +8,7 @@ import json
 import requests
 from sql_grabbers import sql_info_grabber
 
-cnx = mysql.connector.connect(user='root', password='password@12',
+cnx = mysql.connector.connect(user='root', password='',
                                  host='localhost', database='steam')
 cursor = cnx.cursor()
 
